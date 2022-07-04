@@ -5,14 +5,20 @@ import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_labs.plugins import register_page
 
+
 register_page(__name__, path="/plots")
+
+
+
+
 
 features = pd.read_excel('gs://lidar-data-01/datasets/featureCodes.xlsx')
 #features = pd.read_excel('gs://lidar-data-01/lidarDataClassified/total_lidar_data.csv')
 features = features.sort_values(['Feature Code'], ascending=True).reset_index(drop=True)
 features.columns = ["Code", "Description"]
+features.reset_index().rename(columns={'index': ''})
 table = dbc.Table.from_dataframe(
-    features, striped=True, bordered=True, hover=True, index=True
+    features, striped=True, bordered=True, hover=True, index=False
 )
 
 
@@ -30,32 +36,36 @@ df2 = df_dd2.compute()
 code_data2 = pd.DataFrame(df2["Code"].value_counts()).reset_index()
 code_data2.columns = ["Code", "Count"]
 merged2 = pd.merge(code_data2, features, on="Code")
-
-
+#app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+#app = dash.Dash(external_stylesheets=[dbc.themes.FLATLY])
 
 layout = dbc.Container(
     [
         dbc.Row(
             [
-            dbc.Col(
-                html.Div(
-                        [
-                            html.H4("MDS-01",style={'marginTop':'4rem','textAlign':'center'}),
-                            dcc.Graph(id='scatter',
-                            figure=px.scatter(merged, x='Code',y='Count', color="Count", size='Count', hover_data=['Description'])
-                                ),
-                            html.H4("MDS-02",style={'textAlign':'center'}),
-                            dcc.Graph(id='scatter2',
-                            figure=px.scatter(merged2, x='Code',y='Count',color="Count", size='Count', hover_data=['Description'])
-                                )
-                        ]
-                    )                                                                                  
-                ),
+                
+
                 dbc.Col(
-                table,
-                width={"size": 4}
-                ) 
-            ]
+                    html.Div(
+                            [
+                                html.H3('EXPLORATORY DATA ANALYSIS',style={'marginTop':'4rem','textAlign':'center','color':'#50006e','marginBottom':'5rem'}),
+                                html.H4("Section-1",style={'marginTop':'4rem','textAlign':'center'}),
+                                dcc.Graph(id='scatter',
+                                figure=px.scatter(merged, x='Code',y='Count', color="Count", size='Count', hover_data=['Description'])
+                                    ),
+                                html.H4("Section-2",style={'textAlign':'center'}),
+                                dcc.Graph(id='scatter2',
+                                figure=px.scatter(merged2, x='Code',y='Count',color="Count", size='Count', hover_data=['Description'])
+                                    )
+                            ]
+                        )                                                                                  
+                    ),
+                    dbc.Col(
+                    table,
+                    width={"size": 4}
+                    ) 
+                ]
         )
     ]
 )
+

@@ -17,6 +17,13 @@ request_path_prefix = None
 # Dash instance declaration
 app = dash.Dash(__name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.FLATLY])
 
+IMAGES_BASE_URL = 'https://storage.googleapis.com/lidar-data-01/images/'
+
+list_of_images = [
+    'section1','section2','section3','section4',
+    'section5','section6','section7','section8',
+    'section9','section10','section11'
+    ]
 
 
 #Top menu, items get from all pages registered with plugin.pages
@@ -53,7 +60,12 @@ app.layout = dbc.Container(
 
 # Call to external function to register all callbacks
 #register_callbacks(app)
+@app.callback(
+    dash.dependencies.Output('image', 'src'),
+    [dash.dependencies.Input('image-dropdown', 'value')])
 
+def update_image_src(value):
+    return IMAGES_BASE_URL + value + '.png'
 
 # This call will be used with Gunicorn server
 server = app.server
