@@ -60,7 +60,7 @@ dash_app.layout = dbc.Container(
 
 # Call to external function to register all callbacks
 #register_callbacks(app)
-@app.callback(
+@dash_app.callback(
     dash.dependencies.Output('image', 'src'),
     [dash.dependencies.Input('image-dropdown', 'value')])
 

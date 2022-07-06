@@ -27,8 +27,7 @@ layout = dbc.Container(
                         ),
                     dbc.Col(html.Div(
                             [
-                            html.P('Data set are shwon as renderd using the Open3D Python library'),
-                            html.P('Data set are shwon as renderd using the Open3D Python library')
+                            html.P('Data sets rendered by using the Open3D Python library')
                             ]
                         ),
                         width={'size':4}
