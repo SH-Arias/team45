@@ -2,7 +2,6 @@
 import dash
 import dash_labs as dl
 import dash_bootstrap_components as dbc
-import os
 #from callbacks import register_callbacks
 
 
@@ -18,13 +17,6 @@ request_path_prefix = None
 dash_app = dash.Dash(__name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.FLATLY])
 
 IMAGES_BASE_URL = 'https://storage.googleapis.com/lidar-data-01/images/'
-
-list_of_images = [
-    'section1','section2','section3','section4',
-    'section5','section6','section7','section8',
-    'section9','section10','section11'
-    ]
-
 
 #Top menu, items get from all pages registered with plugin.pages
 navbar = dbc.NavbarSimple([
