@@ -3,7 +3,12 @@ from dash import html , dcc
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_labs.plugins import register_page
-from app import list_of_images
+
+list_of_images = [
+    'section1','section2','section3','section4',
+    'section5','section6','section7','section8',
+    'section9','section10','section11'
+    ]
 
 register_page(__name__, path="/dsm")
 
@@ -27,8 +32,7 @@ layout = dbc.Container(
                         ),
                     dbc.Col(html.Div(
                             [
-                            html.P('Data set are shwon as renderd using the Open3D Python library'),
-                            html.P('Data set are shwon as renderd using the Open3D Python library')
+                            html.P('Data sets rendered by using the Open3D Python library')
                             ]
                         ),
                         width={'size':4}
