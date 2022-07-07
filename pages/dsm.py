@@ -43,7 +43,6 @@ layout = dbc.Container(
                         ),
                     dbc.Col(html.Div(
                             [
-<<<<<<< HEAD
                             html.H3('DIGITAL SURFACE MODELS'),
                             html.Br(),
                             html.P('Heres how raw data looks like:'),
@@ -54,9 +53,6 @@ layout = dbc.Container(
                                 rendered using the Open3D Python library.\
                                 '),
                             html.P('The colors vary from blue to red on the images according to the X coordinate, being blue the lowest and red the higher position along that axis.')
-=======
-                            html.P('Data sets rendered by using the Open3D Python library')
->>>>>>> f079545a184d9d874d05b16bada01f36b296d499
                             ]
                         ),
                         width={'size':4}
