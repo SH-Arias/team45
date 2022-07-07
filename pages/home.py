@@ -24,7 +24,7 @@ layout = dbc.Container(
                 dbc.Col(
                     #html.Div(html.Img(src=app.get_asset_url('imageedit_1_6955781055.png'), style={'width':'70%', 'textAlign':'center'})),
                     html.Div(html.Img(src=('https://storage.googleapis.com/lidar-data-01/images/team45logo.png'), style={'width':'50%', 'display':'inline-block'})),
-                    )
+                    ),
             ]
         ),
         dbc.Row(
