@@ -35,7 +35,7 @@ navbar = dbc.NavbarSimple([
     dbc.NavItem(dbc.NavLink("Nosotros", href="/nosotros")),
     ],
     brand="DS4A Project",
-    color="primary",
+    color="#0096FF",
     dark=True,
     className="mb-2",
 )
