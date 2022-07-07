@@ -2,7 +2,6 @@
 import dash
 import dash_labs as dl
 import dash_bootstrap_components as dbc
-import os
 #from callbacks import register_callbacks
 
 
@@ -15,16 +14,9 @@ request_path_prefix = None
 
     
 # Dash instance declaration
-app = dash.Dash(__name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.FLATLY])
+dash_app = dash.Dash(__name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.FLATLY])
 
 IMAGES_BASE_URL = 'https://storage.googleapis.com/lidar-data-01/images/'
-
-list_of_images = [
-    'section1','section2','section3','section4',
-    'section5','section6','section7','section8',
-    'section9','section10','section11'
-    ]
-
 
 #Top menu, items get from all pages registered with plugin.pages
 navbar = dbc.NavbarSimple([
@@ -49,7 +41,7 @@ navbar = dbc.NavbarSimple([
 )
 
 #Main layout
-app.layout = dbc.Container(
+dash_app.layout = dbc.Container(
     [
         navbar,
         dl.plugins.page_container,
@@ -60,7 +52,7 @@ app.layout = dbc.Container(
 
 # Call to external function to register all callbacks
 #register_callbacks(app)
-@app.callback(
+@dash_app.callback(
     dash.dependencies.Output('image', 'src'),
     [dash.dependencies.Input('image-dropdown', 'value')])
 
@@ -68,8 +60,8 @@ def update_image_src(value):
     return IMAGES_BASE_URL + value + '.png'
 
 # This call will be used with Gunicorn server
-server = app.server
+app = dash_app.server
 
 # Testing server, don't use in production, host
 if __name__ == "__main__":
-    app.run_server(host='0.0.0.0', port=8050, debug=True)
+    dash_app.run_server(debug=True, host='0.0.0.0', port='80')

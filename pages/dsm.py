@@ -3,7 +3,12 @@ from dash import html , dcc
 import plotly.express as px
 import dash_bootstrap_components as dbc
 from dash_labs.plugins import register_page
-from app import list_of_images
+
+list_of_images = [
+    'section1','section2','section3','section4',
+    'section5','section6','section7','section8',
+    'section9','section10','section11'
+    ]
 
 register_page(__name__, path="/dsm")
 data = {'Code': [300, 200, 601], 
@@ -38,6 +43,7 @@ layout = dbc.Container(
                         ),
                     dbc.Col(html.Div(
                             [
+<<<<<<< HEAD
                             html.H3('DIGITAL SURFACE MODELS'),
                             html.Br(),
                             html.P('Heres how raw data looks like:'),
@@ -48,6 +54,9 @@ layout = dbc.Container(
                                 rendered using the Open3D Python library.\
                                 '),
                             html.P('The colors vary from blue to red on the images according to the X coordinate, being blue the lowest and red the higher position along that axis.')
+=======
+                            html.P('Data sets rendered by using the Open3D Python library')
+>>>>>>> f079545a184d9d874d05b16bada01f36b296d499
                             ]
                         ),
                         width={'size':4}
