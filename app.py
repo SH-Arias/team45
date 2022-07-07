@@ -21,7 +21,7 @@ IMAGES_BASE_URL = 'https://storage.googleapis.com/lidar-data-01/images/'
 #Top menu, items get from all pages registered with plugin.pages
 navbar = dbc.NavbarSimple([
 
-    dbc.NavItem(dbc.NavLink( "Inicio", href="/")),
+    dbc.NavItem(dbc.NavLink( "Home", href="/")),
     dbc.DropdownMenu(
         [
             
@@ -32,7 +32,7 @@ navbar = dbc.NavbarSimple([
         nav=True,
         label="Data Science",
     ),
-    dbc.NavItem(dbc.NavLink("Nosotros", href="/nosotros")),
+    dbc.NavItem(dbc.NavLink("Team 45", href="/nosotros")),
     ],
     brand="DS4A Project",
     color="#0096FF",
